@@ -7,7 +7,11 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/payment/:message/:amount" element={<Payment />} />
+      <Route path="/payment">
+        <Route path=":message">
+          <Route path=":amount" element={<Payment />} />
+        </Route>
+      </Route>
     </Routes>
   )
 }
