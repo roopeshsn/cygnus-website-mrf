@@ -8,9 +8,8 @@ import {
   updateEmail,
   updatePassword,
 } from 'firebase/auth'
-import { auth, db } from '../firebase'
+import { auth } from '../firebase'
 import { FirebaseError } from 'firebase/app'
-import { doc, setDoc } from 'firebase/firestore'
 
 const AuthContext = React.createContext()
 
@@ -39,10 +38,6 @@ export function AuthProvider({ children }) {
   async function signin(email, password) {
     try {
       await signInWithEmailAndPassword(auth, email, password)
-      await setDoc(doc(db, 'users', currentUser.uid), {
-        uid: currentUser.uid,
-        isEligibleForFood: true,
-      })
     } catch (err) {
       if (err instanceof FirebaseError) {
         handleError(err.code)
