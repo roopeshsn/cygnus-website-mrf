@@ -1,9 +1,12 @@
+import { Box, Container, Grid, Typography } from '@mui/material'
 import Button from '@mui/material/Button'
 import { doc, updateDoc } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { db } from '../firebase'
 import { findOne } from '../utils/firebase'
+import ThumbDownAltOutlinedIcon from '@mui/icons-material/ThumbDownAltOutlined'
+import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined'
 
 export default function User() {
   const [userData, setUserData] = useState({})
@@ -28,13 +31,39 @@ export default function User() {
       .catch((e) => console.error(e))
   }
   return (
-    <div>
-      {userData?.isEligibleForFood ? (
-        <p>User is eligible for food!</p>
-      ) : (
-        <p>User is not eligible for food!</p>
-      )}
-      <Button onClick={handleClick}>Mark user as bought the food!</Button>
-    </div>
+    <Container>
+      <Box sx={{ mt: '2rem' }}>
+        {userData?.isEligibleForFood ? (
+          <Grid container spacing={2} style={{ alignItems: 'center' }}>
+            <Grid item>
+              <ThumbUpAltOutlinedIcon />
+            </Grid>
+            <Grid item>
+              <Typography variant="h5" component="h1">
+                User is eligible for food!
+              </Typography>
+            </Grid>
+          </Grid>
+        ) : (
+          <Grid container spacing={2} style={{ alignItems: 'center' }}>
+            <Grid item>
+              <ThumbDownAltOutlinedIcon />
+            </Grid>
+            <Grid item>
+              <Typography variant="h5" component="h1">
+                User is not eligible for food!
+              </Typography>
+            </Grid>
+          </Grid>
+        )}
+        {userData.isEligibleForFood ? (
+          <Button onClick={handleClick} variant="outlined" sx={{ mt: '1rem' }}>
+            Mark user as bought the food
+          </Button>
+        ) : (
+          <></>
+        )}
+      </Box>
+    </Container>
   )
 }
