@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
-import { TextField, Button, Container, Box, Typography } from '@mui/material'
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
+import Container from '@mui/material/Container'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 import { useAuth } from '../contexts/AuthContext'
 import { useNavigate } from 'react-router'
 
