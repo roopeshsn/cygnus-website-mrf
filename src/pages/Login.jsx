@@ -6,6 +6,8 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import { useAuth } from '../contexts/AuthContext'
 import { useNavigate } from 'react-router'
+import { doc, setDoc } from 'firebase/firestore'
+import { db } from '../firebase'
 
 export default function Login() {
   //const [credentials, setCredentials] = useState({ email: '', password: '' })
@@ -28,6 +30,10 @@ export default function Login() {
       setError('')
       setLoading(true)
       await signin(data.get('email'), data.get('password'))
+      await setDoc(doc(db, 'users', currentUser.uid), {
+        uid: currentUser.uid,
+        isEligibleForFood: true,
+      })
       setLoading(false)
       navigate('/dashboard')
     } catch (error) {
