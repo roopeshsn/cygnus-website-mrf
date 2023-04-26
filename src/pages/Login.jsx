@@ -19,9 +19,6 @@ export default function Login() {
   const navigate = useNavigate()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-  if (currentUser.uid) {
-    navigate('/dashboard')
-  }
   const handleSubmit = async (e) => {
     e.preventDefault()
     console.log(currentUser)
