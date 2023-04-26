@@ -6,17 +6,8 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import { useAuth } from '../contexts/AuthContext'
 import { useNavigate } from 'react-router'
-import { doc, setDoc } from 'firebase/firestore'
-import { db } from '../firebase'
 
 export default function Login() {
-  //const [credentials, setCredentials] = useState({ email: '', password: '' })
-  // const handleChange = (e) => {
-  //   setCredentials({
-  //     ...credentials,
-  //     [e.currentTarget.id]: e.currentTarget.value,
-  //   })
-  // }
   const { signin, currentUser } = useAuth()
   const navigate = useNavigate()
   const [error, setError] = useState('')
@@ -25,17 +16,12 @@ export default function Login() {
     e.preventDefault()
     console.log(currentUser)
     const data = new FormData(e.currentTarget)
-    console.log(data.get('email'), data.get('password'))
     try {
       setError('')
       setLoading(true)
-      signin(data.get('email'), data.get('password'))
-      await setDoc(doc(db, 'users', currentUser.uid), {
-        uid: currentUser.uid,
-        isEligibleForFood: true,
-      })
-      setLoading(false)
+      await signin(data.get('email'), data.get('password'))
       navigate('/dashboard')
+      setLoading(false)
     } catch (error) {
       setError('Failed to signin')
       setLoading(false)
