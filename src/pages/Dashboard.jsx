@@ -5,8 +5,12 @@ import { useNavigate } from 'react-router'
 import { useAuth } from '../contexts/AuthContext'
 
 export default function Dashboard() {
-  const { currentUser } = useAuth()
+  const { currentUser, signout } = useAuth()
   const navigate = useNavigate()
+  const handleSignOut = (e) => {
+    signout()
+    navigate('/login')
+  }
   return (
     <Container>
       <Box sx={{ mt: '1rem' }}>
@@ -22,6 +26,9 @@ export default function Dashboard() {
           onClick={(e) => navigate('/dashboard/myqrcode')}
         >
           Show my QRCode
+        </Button>
+        <Button sx={{ mt: '0.5rem', display: 'block' }} onClick={handleSignOut}>
+          Sign out
         </Button>
       </Box>
     </Container>

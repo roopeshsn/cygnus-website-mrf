@@ -29,7 +29,7 @@ export default function Login() {
     try {
       setError('')
       setLoading(true)
-      await signin(data.get('email'), data.get('password'))
+      signin(data.get('email'), data.get('password'))
       await setDoc(doc(db, 'users', currentUser.uid), {
         uid: currentUser.uid,
         isEligibleForFood: true,
@@ -53,6 +53,7 @@ export default function Login() {
         justifyContent: 'center',
         alignItems: 'center',
         minHeight: '100%',
+        mt: '8rem',
       }}
     >
       <Box
