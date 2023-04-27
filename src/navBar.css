@@ -1,0 +1,58 @@
+
+.header-links li span {
+  position: relative;
+  z-index: 0;
+}
+
+.header-links li span::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  bottom: 2px;
+  left: -4px;
+  right: -4px;
+  display: block;
+  height: 6px;
+}
+
+.header-links li.active span::before {
+  transition: 0.7s;
+  background-color: #fcae04;
+}
+
+.header-links li:not(.active):hover span::before {
+  transition: 1s;
+  background-color: #ccc;
+}
+
+#my-button {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  padding: 8px 16px; /* use the xl sizes for larger padding */
+  border-radius: 4px; /* use the xl sizes for larger radius */
+
+  display: inline-block;
+  padding: 0.7rem 2.5rem;
+  text-decoration: none;
+  letter-spacing: 1.2px;
+
+  border-radius: 4px;
+
+  margin-right: 0.5rem;
+  text-align: center;
+}
+
+#my-button:hover {
+  background-color: gray;
+}
+
+#navBar {
+  margin: 4rem;
+  padding: 2rem;
+}
+
+.navLinks {
+  margin-left: 2.2em;
+  font-size: 1.2em;
+}
