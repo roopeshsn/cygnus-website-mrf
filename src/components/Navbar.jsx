@@ -4,10 +4,10 @@ import { Link, NavLink } from 'react-router-dom'
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900">
+    <nav className="bg-white border-gray-200">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="/" className="flex items-center">
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+          <span className="self-center text-2xl font-semibold whitespace-nowrap">
             Cygnus
           </span>
         </Link>
@@ -15,7 +15,7 @@ export default function Navbar() {
           onClick={() => setIsOpen(!isOpen)}
           data-collapse-toggle="navbar-default"
           type="button"
-          className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
           aria-controls="navbar-default"
           aria-expanded="false"
         >
@@ -38,14 +38,14 @@ export default function Navbar() {
           className={`w-full md:block md:w-auto ${isOpen ? '' : 'hidden'}`}
           id="navbar-default"
         >
-          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
             <li>
               <NavLink
                 to="/"
                 className={(navData) =>
                   navData.isActive
-                    ? 'block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500'
-                    : 'block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'
+                    ? 'block py-2 pl-3 pr-4 text-white bg-primary rounded md:bg-transparent md:text-secondary md:p-0'
+                    : 'block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-zinc-900 md:p-0'
                 }
               >
                 Home
@@ -56,8 +56,8 @@ export default function Navbar() {
                 to="/events"
                 className={(navData) =>
                   navData.isActive
-                    ? 'block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500'
-                    : 'block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'
+                    ? 'block py-2 pl-3 pr-4 text-white bg-primary rounded md:bg-transparent md:text-secondary md:p-0'
+                    : 'block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-zinc-900 md:p-0'
                 }
               >
                 Events
@@ -68,8 +68,8 @@ export default function Navbar() {
                 to="/contact"
                 className={(navData) =>
                   navData.isActive
-                    ? 'block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500'
-                    : 'block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'
+                    ? 'block py-2 pl-3 pr-4 text-white bg-primary rounded md:bg-transparent md:text-secondary md:p-0'
+                    : 'block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-zinc-900 md:p-0'
                 }
               >
                 Contact
@@ -80,8 +80,8 @@ export default function Navbar() {
                 to="/login"
                 className={(navData) =>
                   navData.isActive
-                    ? 'block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500'
-                    : 'block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'
+                    ? 'block py-2 pl-3 pr-4 text-white bg-primary rounded md:bg-transparent md:text-secondary md:p-0'
+                    : 'block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-zinc-900 md:p-0'
                 }
               >
                 Login
@@ -94,4 +94,4 @@ export default function Navbar() {
   )
 }
 
-// className="block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
+// className="block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:text-primary-700 md:p-0 dark:text-white md:dark:text-primary-500"

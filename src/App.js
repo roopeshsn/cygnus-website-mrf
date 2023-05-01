@@ -8,6 +8,7 @@ import MyQrCode from './pages/MyQrCode'
 import User from './pages/User'
 import PrivateRoutes from './components/PrivateRoutes'
 import Events from './pages/Events'
+import Event from './pages/Event'
 import Contact from './pages/Contact'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} exact />
         <Route path="/events" element={<Events />} />
+        <Route path="/events/:event" element={<Event />} />
         <Route path="/contact" element={<Contact />} />
         <Route element={<PrivateRoutes />}>
           <Route path="/dashboard" element={<Dashboard />} />
