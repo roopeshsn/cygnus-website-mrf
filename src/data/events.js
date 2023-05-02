@@ -175,7 +175,10 @@ export const events = [
     param: 'lift-the-brick',
     href: '/events/lift-the-brick',
     category: 'non-technical',
-    description: 'Yet to update!',
+    description:
+      'Participants must hold a brick for one minute without dropping it to win the prize money in this endurance challenge.',
+    rules: 'Yet to be updated!',
+    note: 'Yet to be updated!',
     image:
       'https://res.cloudinary.com/dtinnnjnt/image/upload/v1682934871/cygnus-event-posters/lift-the-brick-poster_ihbz3v.jpg',
     contact: [
