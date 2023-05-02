@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import partying from '../assets/images/partying.jpg'
 
 export default function Hero() {
   return (
@@ -34,7 +33,11 @@ export default function Hero() {
           </Link>
         </div>
         <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
-          <img src={partying} alt="mockup" />
+          <img
+            className="rounded-xl"
+            src="https://res.cloudinary.com/dtinnnjnt/image/upload/v1683007785/cygnus-event-posters/hero/partying_xnkteu.jpg"
+            alt="hero_image"
+          />
         </div>
       </div>
     </section>
