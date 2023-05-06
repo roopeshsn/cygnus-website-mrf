@@ -83,7 +83,7 @@ export default function Login() {
             />
             <Typography component="h6" variant="body2">
               Email is your rollnumber or rrn. If your rollnumber is
-              "190041601005" then your email is "190041601005@cygnus23.com"
+              "190041601205" then your email is "190041601205@cygnus23.com"
             </Typography>
             <TextField
               margin="normal"
@@ -98,7 +98,7 @@ export default function Login() {
             <Typography component="h6" variant="body2">
               Password is the combination of your name (first 4 letters) and
               rollnumber (last 4 digits). For eg, If your name is "Anas Khan"
-              and RRN is "190041601005" then your password is "anas1005".
+              and RRN is "190041601205" then your password is "anas1205".
             </Typography>
             <Button
               type="submit"

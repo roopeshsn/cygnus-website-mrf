@@ -11,6 +11,7 @@ import Events from './pages/Events'
 import Event from './pages/Event'
 import Contact from './pages/Contact'
 import Users from './pages/Users'
+import Leaderboard from './pages/Leaderboard'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<Home />} exact />
         <Route path="/events" element={<Events />} />
         <Route path="/events/:event" element={<Event />} />
+        <Route path="/events/leaderboard" element={<Leaderboard />} />
         <Route path="/contact" element={<Contact />} />
         <Route element={<PrivateRoutes />}>
           <Route path="/dashboard" element={<Dashboard />} />
