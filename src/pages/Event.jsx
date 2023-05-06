@@ -3,16 +3,42 @@ import { Link, useParams } from 'react-router-dom'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import { events } from '../data/events'
+import { useAuth } from '../contexts/AuthContext'
+import { findOne } from '../utils/firebase'
 
 export default function Event() {
   const [eventData, setEventData] = useState({})
+  const [userData, setUserData] = useState(null)
   let params = useParams()
   let eventName = params.event
+  const { currentUser } = useAuth()
 
   useEffect(() => {
+    let isMounted = true
     let eventDetails = events.filter((event) => event.param === eventName)
     setEventData(eventDetails[0])
-  }, [eventName])
+
+    async function fetchData() {
+      try {
+        const data = await findOne('testUsers', currentUser?.uid.toString())
+        if (isMounted) {
+          setUserData(data)
+        }
+      } catch (e) {
+        console.error(e)
+      }
+    }
+
+    if (currentUser) {
+      fetchData()
+    }
+
+    return () => {
+      isMounted = false
+    }
+  }, [eventName, currentUser])
+
+  console.log(userData)
 
   return (
     <>
@@ -173,7 +199,7 @@ export default function Event() {
           <Link
             to="https://bit.ly/CY23Register"
             target="_blank"
-            className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary hover:bg-zinc-900 focus:ring-4 focus:ring-slate-300"
+            className="inline-flex items-center justify-center px-4 py-2 md:px-5 md:py-3 mr-2 text-base font-medium text-center text-white rounded-lg bg-primary hover:bg-zinc-900 focus:ring-4 focus:ring-slate-300"
           >
             Book Now
             <svg
@@ -189,6 +215,26 @@ export default function Event() {
               ></path>
             </svg>
           </Link>
+          {userData?.isAdmin && (
+            <Link
+              to={`/events/${eventName}/users`}
+              className="inline-flex items-center justify-center px-4 py-2 md:px-5 md:py-3 text-base font-medium text-center text-white rounded-lg bg-primary hover:bg-zinc-900 focus:ring-4 focus:ring-slate-300"
+            >
+              View Participants
+              <svg
+                className="w-5 h-5 ml-2 -mr-1"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
+            </Link>
+          )}
         </div>
       </section>
       <Footer />

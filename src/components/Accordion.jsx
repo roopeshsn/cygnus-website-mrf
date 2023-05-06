@@ -23,7 +23,7 @@ export default function Accordion() {
       data-accordion="collapse"
     >
       <div className="text-center">
-        <h1 className="text-2xl md:text-4xl pb-2 font-semibold">FAQ's</h1>
+        <h1 className="text-3xl md:text-4xl pb-2 font-semibold">FAQ's</h1>
         <p className="text-xl md:text-2xl text-gray-500">
           If you have a question look around through our FAQ below.
         </p>

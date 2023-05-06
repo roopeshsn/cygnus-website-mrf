@@ -10,6 +10,7 @@ import PrivateRoutes from './components/PrivateRoutes'
 import Events from './pages/Events'
 import Event from './pages/Event'
 import Contact from './pages/Contact'
+import Users from './pages/Users'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/myqrcode" element={<MyQrCode />} />
           <Route path="/search" element={<User />} />
+          <Route path="/events/:event/users" element={<Users />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/payment">

@@ -7,7 +7,7 @@ export default function Events() {
   return (
     <section className="px-4 py-8">
       <div>
-        <h1 className="text-4xl font-bold text-center">Events</h1>
+        <h1 className="text-3xl md:text-4xl font-bold text-center">Events</h1>
         <div className="mt-8 grid grid-cols-1 justify-items-center items-center gap-4 lg:grid-cols-2">
           {events.slice(0, 6).map((event) => {
             return (
