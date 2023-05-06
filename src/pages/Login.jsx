@@ -21,8 +21,11 @@ export default function Login() {
   }, [currentUser, navigate])
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(currentUser)
+    // console.log(currentUser)
     const data = new FormData(e.currentTarget)
+    if (data.get('email') === '' || data.get('password') === '') {
+      return
+    }
     try {
       setError('')
       setLoading(true)
@@ -49,6 +52,7 @@ export default function Login() {
           alignItems: 'center',
           minHeight: '100%',
           mt: '2rem',
+          mb: '4rem',
         }}
       >
         <Box
@@ -77,6 +81,10 @@ export default function Login() {
               name="email"
               autoComplete="email"
             />
+            <Typography component="h6" variant="body2">
+              Email is your rollnumber or rrn. If your rollnumber is
+              "190041601005" then your email is "190041601005@cygnus23.com"
+            </Typography>
             <TextField
               margin="normal"
               required
@@ -87,6 +95,11 @@ export default function Login() {
               id="password"
               autoComplete="current-password"
             />
+            <Typography component="h6" variant="body2">
+              Password is the combination of your name (first 4 letters) and
+              rollnumber (last 4 digits). For eg, If your name is "Anas Khan"
+              and RRN is "190041601005" then your password is "anas1005".
+            </Typography>
             <Button
               type="submit"
               fullWidth

@@ -13,6 +13,7 @@ export default function Dashboard() {
     signout()
     navigate('/login')
   }
+  // console.log(currentUser)
   return (
     <>
       <Navbar />
