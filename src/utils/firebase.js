@@ -10,7 +10,14 @@ export const findOne = async (collection, id) => {
 
 export const findAll = async (id) => {
   const usersRef = collection(db, 'testUsers')
-  const q = query(usersRef, where(`scores.${id}`, '!=', null))
+  let q = query(usersRef, where(`scores.${id}`, '!=', null))
+  if (id === 'projectExpo' || id === 'foodFeast') {
+    q = query(
+      usersRef,
+      where(`scores.${id}`, '!=', null),
+      where(`scores.${id}.isTeamLead`, '==', true),
+    )
+  }
   const querySnapshot = await getDocs(q)
   const allUsers = []
   querySnapshot.forEach((doc) => {

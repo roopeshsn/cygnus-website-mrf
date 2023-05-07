@@ -7,7 +7,8 @@ import { findAll } from '../utils/firebase'
 
 export default function Users() {
   const [users, setUsers] = useState(null)
-  // const [eventName, setEventName] = useState(null)
+  const [currentEvent, setCurrentEvent] = useState(null)
+  const [isTeamEvent, setIsTeamEvent] = useState(null)
   const [currentUsername, setCurrentUsername] = useState(null)
   const [currentUid, setCurrentUid] = useState(null)
   const [isModalActive, setIsModalActive] = useState(false)
@@ -17,40 +18,67 @@ export default function Users() {
   const [success, setSuccess] = useState(false)
   // const [updateField, setUpdateField] = useState(null)
   let params = useParams()
-  let eventName = params.event
-  let isTeamEvent = false
-  if (eventName === 'block-and-tackle') {
-    eventName = 'blockAndTackle'
-    //setEventName('blockAndTackle')
-    // setIsTeamEvent(false)
-  } else if (eventName === 'show-your-talent') {
-    //setEventName('showYourTalent')
-    // setIsTeamEvent(true)
-    eventName = 'showYourTalent'
-    isTeamEvent = true
-  } else if (eventName === 'project-expo') {
-    //setEventName('projectExpo')
-    // setIsTeamEvent(true)
-    eventName = 'projectExpo'
-    isTeamEvent = true
-  } else if (eventName === 'elevator-pitch') {
-    //setEventName('elevatorPitch')
-    // setIsTeamEvent(false)
-    eventName = 'elevatorPitch'
-  } else if (eventName === 'food-feast') {
-    //setEventName('foodFeast')
-    // setIsTeamEvent(true)
-    isTeamEvent = true
-    eventName = 'foodFeast'
-  } else if (eventName === 'connexion') {
-    // setIsTeamEvent(true)
-    isTeamEvent = true
-  }
+  // let eventName = params.event
+  // let isTeamEvent = false
+  // if (eventName === 'block-and-tackle') {
+  //   eventName = 'blockAndTackle'
+  //   //setEventName('blockAndTackle')
+  //   // setIsTeamEvent(false)
+  // } else if (eventName === 'show-your-talent') {
+  //   //setEventName('showYourTalent')
+  //   // setIsTeamEvent(true)
+  //   eventName = 'showYourTalent'
+  //   isTeamEvent = true
+  // } else if (eventName === 'project-expo') {
+  //   //setEventName('projectExpo')
+  //   // setIsTeamEvent(true)
+  //   eventName = 'projectExpo'
+  //   isTeamEvent = true
+  // } else if (eventName === 'elevator-pitch') {
+  //   //setEventName('elevatorPitch')
+  //   // setIsTeamEvent(false)
+  //   eventName = 'elevatorPitch'
+  // } else if (eventName === 'food-feast') {
+  //   //setEventName('foodFeast')
+  //   // setIsTeamEvent(true)
+  //   isTeamEvent = true
+  //   eventName = 'foodFeast'
+  // } else if (eventName === 'connexion') {
+  //   // setIsTeamEvent(true)
+  //   isTeamEvent = true
+  // } else {
+  //   isTeamEvent = false
+  // }
+  useEffect(() => {
+    let eventName = params.event
+    if (eventName === 'block-and-tackle') {
+      setCurrentEvent('blockAndTackle')
+      setIsTeamEvent(false)
+    } else if (eventName === 'show-your-talent') {
+      setCurrentEvent('showYourTalent')
+      setIsTeamEvent(true)
+    } else if (eventName === 'project-expo') {
+      setCurrentEvent('projectExpo')
+      setIsTeamEvent(true)
+    } else if (eventName === 'elevator-pitch') {
+      setCurrentEvent('elevatorPitching')
+      setIsTeamEvent(false)
+    } else if (eventName === 'food-feast') {
+      setCurrentEvent('foodFeast')
+      setIsTeamEvent(true)
+    } else if (eventName === 'connexion') {
+      setCurrentEvent('connexion')
+      setIsTeamEvent(true)
+    } else {
+      setCurrentEvent(params.event)
+      setIsTeamEvent(false)
+    }
+  }, [params])
   useEffect(() => {
     let isMounted = true
     async function fetchData() {
       try {
-        const data = await findAll(eventName)
+        const data = await findAll(currentEvent)
         if (isMounted) {
           setUsers(data)
         }
@@ -62,8 +90,7 @@ export default function Users() {
     return () => {
       isMounted = false
     }
-  }, [eventName])
-  //console.log(users)
+  }, [currentEvent])
   const handleClick = (uid, username) => {
     console.log('click')
     setCurrentUid(uid)
@@ -91,9 +118,9 @@ export default function Users() {
       console.log(score)
       let updateField = ''
       if (isTeamEvent) {
-        updateField = `scores.${eventName}.teamPoints`
+        updateField = `scores.${currentEvent}.teamPoints`
       } else {
-        updateField = `scores.${eventName}.points`
+        updateField = `scores.${currentEvent}.points`
       }
       let field = {}
       field.updateField = updateField
@@ -118,23 +145,37 @@ export default function Users() {
     <>
       <Navbar />
       <div className="container px-4 py-4 lg:px-14">
-        <h1 className="text-xl font-medium">All Participants - {eventName}</h1>
+        <h1 className="text-xl font-medium">
+          All Participants - {currentEvent}
+        </h1>
         <div className="mt-4 flex flex-col gap-1">
           {users &&
             users.map((user, idx) => {
               return (
                 <div
                   key={idx}
-                  className="flex justify-between items-center border-b-2 border-solid border-zinc-300"
+                  className="flex justify-between items-center border-b-2 border-solid border-zinc-300 text-lg"
                 >
-                  <div className="text-lg">{user.name}</div>
-                  {user.scores[eventName].isTeamLead ? (
-                    <span>TL</span>
-                  ) : (
-                    <span></span>
-                  )}
+                  <div>
+                    <div className="text-lg inline-block mr-2">{user.name}</div>
+                    {isTeamEvent ? (
+                      <>
+                        <span className="inline-block mr-2">-</span>
+                        <span className="inline-block mr-2">
+                          {user.scores[`${currentEvent}`].teamName}
+                        </span>
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                    {/* {user.scores[currentEvent].isTeamLead ? (
+                      <span className="inline-block">TL</span>
+                    ) : (
+                      <></>
+                    )} */}
 
-                  {/* <div>{user.collegeRollNumber}</div> */}
+                    {/* <div>{user.collegeRollNumber}</div> */}
+                  </div>
                   <button
                     className="cursor-pointer"
                     onClick={() => handleClick(user.uid, user.name)}
