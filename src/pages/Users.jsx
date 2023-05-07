@@ -79,6 +79,19 @@ export default function Users() {
     async function fetchData() {
       try {
         const data = await findAll(currentEvent)
+        data.sort(function (a, b) {
+          if (isTeamEvent) {
+            return (
+              b.scores[`${currentEvent}`].teamPoints -
+              a.scores[`${currentEvent}`].teamPoints
+            )
+          } else {
+            return (
+              b.scores[`${currentEvent}`].points -
+              a.scores[`${currentEvent}`].points
+            )
+          }
+        })
         if (isMounted) {
           setUsers(data)
         }
@@ -90,7 +103,7 @@ export default function Users() {
     return () => {
       isMounted = false
     }
-  }, [currentEvent])
+  }, [currentEvent, isTeamEvent])
   const handleClick = (uid, username) => {
     console.log('click')
     setCurrentUid(uid)
@@ -115,7 +128,7 @@ export default function Users() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      console.log(score)
+      //console.log(score)
       let updateField = ''
       if (isTeamEvent) {
         updateField = `scores.${currentEvent}.teamPoints`
@@ -125,8 +138,8 @@ export default function Users() {
       let field = {}
       field.updateField = updateField
       setIsModalActive(false)
-      console.log(updateField)
-      console.log({ [field.updateField]: 2 })
+      //console.log(updateField)
+      //console.log({ [field.updateField]: 2 })
       const docRef = doc(db, 'testUsers', currentUid.toString())
       await updateDoc(docRef, {
         [field.updateField]: score,
@@ -139,14 +152,14 @@ export default function Users() {
       setError(true)
       setSuccess(false)
     }
-    console.log(score)
+    //console.log(score)
   }
   return (
     <>
       <Navbar />
       <div className="container px-4 py-4 lg:px-14">
         <h1 className="text-xl font-medium">
-          All Participants - {currentEvent}
+          All Participants - {currentEvent} - {users?.length}
         </h1>
         <div className="mt-4 flex flex-col gap-1">
           {users &&
@@ -162,11 +175,16 @@ export default function Users() {
                       <>
                         <span className="inline-block mr-2">-</span>
                         <span className="inline-block mr-2">
-                          {user.scores[`${currentEvent}`].teamName}
+                          {user.scores[`${currentEvent}`].teamName ||
+                            (currentEvent === 'showYourTalent' && 'Solo')}
                         </span>
+                        <span>{user.scores[`${currentEvent}`].teamPoints}</span>
                       </>
                     ) : (
-                      <></>
+                      <>
+                        <span className="mr-2">-</span>
+                        <span>{user.scores[`${currentEvent}`].points}</span>
+                      </>
                     )}
                     {/* {user.scores[currentEvent].isTeamLead ? (
                       <span className="inline-block">TL</span>

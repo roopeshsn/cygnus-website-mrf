@@ -12,7 +12,7 @@ export default function Leaderboard() {
   const [height, setHeight] = useState(window.innerHeight)
   const [width, setWidth] = useState(window.innerWidth)
   const [isRunning, setIsRunning] = useState(false)
-  const [isLive, setLive] = useState(true)
+  const [isLive, setLive] = useState(false)
 
   const handleClick = async (eventName) => {
     setCurrentTab(eventName)
@@ -88,7 +88,7 @@ export default function Leaderboard() {
       isMounted = false
     }
   }, [currentTab, isTeamEvent])
-  //console.log(participants)
+  console.log(participants)
   return (
     <>
       <Navbar />
@@ -211,28 +211,65 @@ export default function Leaderboard() {
                         <div className="text-lg inline-block mr-2">
                           {user.name}
                         </div>
-                        {isTeamEvent && user && (
+                        {isTeamEvent &&
+                          user &&
+                          currentTab !== 'connexion' &&
+                          currentTab !== 'showYourTalent' && (
+                            <>
+                              <div className="text-lg inline-block mr-2">-</div>
+                              <div className="text-lg inline-block">
+                                {user.scores[`${currentTab}`]?.teamName}
+                              </div>
+                              {/* <div className="text-lg inline-block mr-2 ml-2">
+                                -
+                              </div>
+                              <div className="text-lg inline-block">
+                                {user.scores[`${currentTab}`]?.teamPoints}
+                              </div> */}
+                            </>
+                          )}
+                        {isTeamEvent && user && currentTab === 'connexion' && (
                           <>
                             <div className="text-lg inline-block mr-2">-</div>
                             <div className="text-lg inline-block">
-                              {user.scores[`${currentTab}`]?.teamName}
+                              {user.scores[`${currentTab}`]?.teamName ||
+                                'Teammate'}
                             </div>
-                            <div className="text-lg inline-block mr-2 ml-2">
+                            {/* <div className="text-lg inline-block mr-2 ml-2">
                               -
                             </div>
                             <div className="text-lg inline-block">
                               {user.scores[`${currentTab}`]?.teamPoints}
-                            </div>
+                            </div> */}
                           </>
                         )}
-                        {!isTeamEvent && user && (
+                        {isTeamEvent &&
+                          user &&
+                          currentTab === 'showYourTalent' && (
+                            <>
+                              <div className="text-lg inline-block mr-2">-</div>
+                              <div className="text-lg inline-block">
+                                {user.scores[`${currentTab}`]?.isSolo &&
+                                user.scores[`${currentTab}`]?.isTeam === false
+                                  ? 'Solo'
+                                  : user.scores[`${currentTab}`]?.teamName}
+                              </div>
+                              {/* <div className="text-lg inline-block mr-2 ml-2">
+                                -
+                              </div>
+                              <div className="text-lg inline-block">
+                                {user.scores[`${currentTab}`]?.teamPoints}
+                              </div> */}
+                            </>
+                          )}
+                        {/* {!isTeamEvent && user && (
                           <>
                             <div className="text-lg inline-block mr-2">-</div>
                             <div className="text-lg inline-block">
                               {user.scores[`${currentTab}`]?.points}
                             </div>
                           </>
-                        )}
+                        )} */}
                       </li>
                     )
                   })}

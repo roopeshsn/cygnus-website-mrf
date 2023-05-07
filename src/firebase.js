@@ -12,13 +12,22 @@ import { getFirestore } from 'firebase/firestore'
 //   appId: process.env.FIREBASE_DRIVE_APP_ID,
 // }
 
+// const firebaseConfig = {
+//   apiKey: 'AIzaSyDneGAykvr0p0NJY1AATARk-Jwmof35iTo',
+//   authDomain: 'cygnus-website-84638.firebaseapp.com',
+//   projectId: 'cygnus-website-84638',
+//   storageBucket: 'cygnus-website-84638.appspot.com',
+//   messagingSenderId: '778268716209',
+//   appId: '1:778268716209:web:1dd335cdd9f06030058690',
+// }
+
 const firebaseConfig = {
-  apiKey: 'AIzaSyDneGAykvr0p0NJY1AATARk-Jwmof35iTo',
-  authDomain: 'cygnus-website-84638.firebaseapp.com',
-  projectId: 'cygnus-website-84638',
-  storageBucket: 'cygnus-website-84638.appspot.com',
-  messagingSenderId: '778268716209',
-  appId: '1:778268716209:web:1dd335cdd9f06030058690',
+  apiKey: 'AIzaSyCuWu_VbrdWJ0JUc5AoS6xCu2xfWQ4-LNo',
+  authDomain: 'cygnus-website-prod.firebaseapp.com',
+  projectId: 'cygnus-website-prod',
+  storageBucket: 'cygnus-website-prod.appspot.com',
+  messagingSenderId: '159256850107',
+  appId: '1:159256850107:web:36dffc4f785eaf55ebc39e',
 }
 
 const app = initializeApp(firebaseConfig)
