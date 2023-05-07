@@ -17,8 +17,8 @@ export const events = [
       { id: 2, name: 'Vikram Venkat', mobile: '86109 36283' },
     ],
     date: 'May 8, 2023',
-    time: '10.30 a.m.',
-    venue: 'offline',
+    time: '02.30p.m. - 03.00p.m',
+    venue: 'ES Library',
   },
   {
     id: 2,
@@ -38,8 +38,8 @@ export const events = [
       { id: 2, name: 'UdhayaShankar. U', mobile: '99628 90038' },
     ],
     date: 'May 8, 2023',
-    time: '10.30 a.m.',
-    venue: 'offline',
+    time: '11.30a.m. - 12.30p.m.',
+    venue: 'ES Library',
   },
   {
     id: 3,
@@ -60,8 +60,8 @@ export const events = [
       { id: 3, name: 'Kuraishi Kareemullah', mobile: '91776 17687' },
     ],
     date: 'May 8, 2023',
-    time: '10.30 a.m.',
-    venue: 'offline',
+    time: '01.30p.m. - 02.30p.m',
+    venue: 'UG Lab',
   },
   {
     id: 4,
@@ -81,8 +81,8 @@ export const events = [
       { id: 2, name: 'Mohamed Khaif', mobile: '98469 04755' },
     ],
     date: 'May 8, 2023',
-    time: '10.30 a.m.',
-    venue: 'offline',
+    time: '01.30p.m. - 02.30p.m.',
+    venue: 'ES 202',
   },
   {
     id: 5,
@@ -103,7 +103,7 @@ export const events = [
     ],
     date: 'May 8, 2023',
     time: '10.30 a.m.',
-    venue: 'offline',
+    venue: 'online',
   },
   {
     id: 6,
@@ -123,8 +123,8 @@ export const events = [
       { id: 2, name: 'Mohammed Javeed', mobile: '73585 21265' },
     ],
     date: 'May 8, 2023',
-    time: '10.30 a.m.',
-    venue: 'offline',
+    time: '12.00a.m. - 03.00p.m.',
+    venue: 'PLC Lab',
   },
   {
     id: 7,
@@ -145,8 +145,8 @@ export const events = [
       { id: 3, name: 'Mohammed Fazil', mobile: '63854 460456' },
     ],
     date: 'May 8, 2023',
-    time: '10.30 a.m.',
-    venue: 'offline',
+    time: '12.30p.m. - 01.30p.m.',
+    venue: 'ES 315, 317',
   },
   {
     id: 8,
@@ -166,7 +166,7 @@ export const events = [
       { id: 2, name: 'Kavin Santhosh. G', mobile: '97911 34062' },
     ],
     date: 'May 8, 2023',
-    time: '10.30 a.m.',
+    time: '02.00p.m. - 03.00p.m.',
     venue: 'offline',
   },
   {
@@ -186,7 +186,7 @@ export const events = [
       { id: 2, name: 'Mohammed Irfan', mobile: '93613 95907' },
     ],
     date: 'May 8, 2023',
-    time: '10.30 a.m.',
+    time: '11.00a.m. - 04.00p.m.',
     venue: 'offline',
   },
 ]

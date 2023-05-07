@@ -88,7 +88,7 @@ export default function Leaderboard() {
       isMounted = false
     }
   }, [currentTab, isTeamEvent])
-  console.log(participants)
+  //console.log(participants)
   return (
     <>
       <Navbar />
