@@ -12,7 +12,7 @@ export default function Leaderboard() {
   const [height, setHeight] = useState(window.innerHeight)
   const [width, setWidth] = useState(window.innerWidth)
   const [isRunning, setIsRunning] = useState(false)
-  const [isLive, setLive] = useState(false)
+  const [isLive, setLive] = useState(true)
 
   const handleClick = async (eventName) => {
     setCurrentTab(eventName)
@@ -115,8 +115,11 @@ export default function Leaderboard() {
               <ul className="flex flex-wrap mt-4 text-sm font-medium text-center text-gray-500 border-b border-gray-200">
                 <li className="mr-2">
                   <button
-                    aria-current="page"
-                    className="inline-block px-4 py-2 text-blue-600 bg-gray-100 rounded-t-lg active"
+                    className={`inline-block px-4 py-2 ${
+                      currentTab === 'projectExpo'
+                        ? 'text-blue-600 bg-gray-100'
+                        : ''
+                    } rounded-t-lg`}
                     onClick={() => handleClick('projectExpo')}
                   >
                     Project Expo
@@ -124,7 +127,11 @@ export default function Leaderboard() {
                 </li>
                 <li className="mr-2">
                   <button
-                    className="inline-block px-4 py-2 rounded-t-lg hover:text-gray-600 hover:bg-gray-50"
+                    className={`inline-block px-4 py-2 rounded-t-lg ${
+                      currentTab === 'blockAndTackle'
+                        ? 'text-blue-600 bg-gray-100'
+                        : ''
+                    }`}
                     onClick={() => handleClick('blockAndTackle')}
                   >
                     Block and Tackle
@@ -132,7 +139,11 @@ export default function Leaderboard() {
                 </li>
                 <li className="mr-2">
                   <button
-                    className="inline-block px-4 py-2 rounded-t-lg hover:text-gray-600 hover:bg-gray-50"
+                    className={`inline-block px-4 py-2 rounded-t-lg ${
+                      currentTab === 'memography'
+                        ? 'text-blue-600 bg-gray-100'
+                        : ''
+                    }`}
                     onClick={() => handleClick('memography')}
                   >
                     Memography
@@ -140,7 +151,11 @@ export default function Leaderboard() {
                 </li>
                 <li className="mr-2">
                   <button
-                    className="inline-block px-4 py-2 rounded-t-lg hover:text-gray-600 hover:bg-gray-50"
+                    className={`inline-block px-4 py-2 rounded-t-lg ${
+                      currentTab === 'elevatorPitching'
+                        ? 'text-blue-600 bg-gray-100'
+                        : ''
+                    }`}
                     onClick={() => handleClick('elevatorPitching')}
                   >
                     Elevator Pitch
@@ -148,7 +163,11 @@ export default function Leaderboard() {
                 </li>
                 <li className="mr-2">
                   <button
-                    className="inline-block px-4 py-2 rounded-t-lg hover:text-gray-600 hover:bg-gray-50"
+                    className={`inline-block px-4 py-2 rounded-t-lg ${
+                      currentTab === 'connexion'
+                        ? 'text-blue-600 bg-gray-100'
+                        : ''
+                    }`}
                     onClick={() => handleClick('connexion')}
                   >
                     Connexion
@@ -156,7 +175,11 @@ export default function Leaderboard() {
                 </li>
                 <li className="mr-2">
                   <button
-                    className="inline-block px-4 py-2 rounded-t-lg hover:text-gray-600 hover:bg-gray-50"
+                    className={`inline-block px-4 py-2 rounded-t-lg ${
+                      currentTab === 'foodFeast'
+                        ? 'text-blue-600 bg-gray-100'
+                        : ''
+                    }`}
                     onClick={() => handleClick('foodFeast')}
                   >
                     Food Feast
@@ -164,7 +187,11 @@ export default function Leaderboard() {
                 </li>
                 <li className="mr-2">
                   <button
-                    className="inline-block px-4 py-2 rounded-t-lg hover:text-gray-600 hover:bg-gray-50"
+                    className={`inline-block px-4 py-2 rounded-t-lg ${
+                      currentTab === 'showYourTalent'
+                        ? 'text-blue-600 bg-gray-100'
+                        : ''
+                    }`}
                     onClick={() => handleClick('showYourTalent')}
                   >
                     Show Your Talent
