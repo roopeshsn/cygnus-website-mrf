@@ -16,12 +16,14 @@ export default function MyQrCode() {
         style={{
           textAlign: 'center',
           paddingBottom: '6rem',
+          paddingLeft: '1rem',
+          paddingRight: '1rem',
         }}
       >
         <Typography
-          variant="h5"
+          variant="h6"
           component="h1"
-          sx={{ mt: '1rem', mb: '1rem', maxWidth: '64' }}
+          sx={{ mt: '1rem', mb: '1rem', maxWidth: '64', lineHeight: '1.2' }}
         >
           Show the QR Code to the volunteer to avail food!
         </Typography>
@@ -47,6 +49,16 @@ export default function MyQrCode() {
             value={value}
           />
         </div>
+        <Typography
+          variant="body2"
+          sx={{
+            mt: '1.5rem',
+            lineHeight: '1.2',
+            color: '#9ca3af',
+          }}
+        >
+          {currentUser.uid}
+        </Typography>
       </div>
       <Footer />
     </>
