@@ -25,7 +25,7 @@ export default function MyQrCode() {
           component="h1"
           sx={{ mt: '1rem', mb: '1rem', maxWidth: '64', lineHeight: '1.2' }}
         >
-          Show the QR Code to the volunteer to avail food!
+          Show the QR Code to the volunteer!
         </Typography>
         <div
           style={{
